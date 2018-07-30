@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>list</title>
+    <script src="/static/main.js"></script>
 </head>
 <body>
     <ul>
         <li>제목 | 저자 | 날짜</li>
     {% for article in article_list %}
-        <li>{{article.title}} | {{article.name}} | {{article.cdate|date:"D d M Y" }}</li>
+        <li><a href="/view/{{article.pk}}">{{article.title}} | {{article.name}} | {{article.cdate|date:"D d M Y" }}</a></li>
     {% endfor %}
     </ul>
 </body>
