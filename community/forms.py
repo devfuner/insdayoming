@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from community.models import *
+from community.models import Article
 
 
 class Form(ModelForm):

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from community.forms import *
+from community.forms import Form, Article
 
 
 # Create your views here.
