@@ -12,7 +12,7 @@
     <ul>
         <li>제목 | 저자 | 날짜</li>
     {% for article in article_list %}
-        <li><a href="/view/{{article.pk}}">{{article.title}} | {{article.name}} | {{article.cdate|date:"D d M Y" }}</a></li>
+        <li><a href="/community/view/{{article.pk}}">{{article.title}} | {{article.name}} | {{article.cdate|date:"D d M Y" }}</a></li>
     {% endfor %}
     </ul>
 </body>
