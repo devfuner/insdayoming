@@ -1,10 +1,7 @@
-{% extends "base.html" %}
+{% extends "community/base.html" %}
 {% load staticfiles %}
 
-{% block content%}
-    <p>
-        <a href="{% url 'list' %}">목록</a>
-    </p>
+{% block content %}
     <table class="table">
         <tr>
             <th>제목</th>
@@ -23,4 +20,4 @@
             <td>{{ article.email }}</td>
         </tr>
     </table>
-{% endblock content%}
+{% endblock content %}

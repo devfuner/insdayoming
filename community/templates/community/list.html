@@ -1,10 +1,7 @@
-{% extends "base.html" %}
+{% extends "community/base.html" %}
 {% load staticfiles %}
 
-{% block content%}
-    <p>
-        <a href="{% url 'write' %}">글쓰기</a>
-    </p>
+{% block content %}
     <table class="table">
         <tr>
             <th>제목</th>
@@ -22,4 +19,4 @@
         {% endfor %}
     </table>
     <script src="{% static 'community/community.js' %}"></script>
-{% endblock content%}
+{% endblock content %}

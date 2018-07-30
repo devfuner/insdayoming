@@ -1,10 +1,7 @@
-{% extends "base.html" %}
+{% extends "community/base.html" %}
 {% load staticfiles %}
 
-{% block content%}
-    <p>
-        <a href="{% url 'list' %}">목록</a>
-    </p>
+{% block content %}
     <form action="" method="post">
         {% csrf_token %}
         <table class="table">
@@ -12,4 +9,4 @@
         </table>
         <button type="submit" class="btn btn-primary">저장</button>
     </form>
-{% endblock content%}
+{% endblock content %}
