@@ -1,15 +1,7 @@
+{% extends "base.html" %}
 {% load staticfiles %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>write</title>
-
-    <link rel="stylesheet" href="{%  static 'bootstrap/bootstrap.min.css' %}">
-
-</head>
-<body>
+{% block content%}
     <p>
         <a href="{% url 'list' %}">목록</a>
     </p>
@@ -20,5 +12,4 @@
         </table>
         <button type="submit" class="btn btn-primary">저장</button>
     </form>
-</body>
-</html>
+{% endblock content%}
