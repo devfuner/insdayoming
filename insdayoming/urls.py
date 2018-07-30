@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^write/', write, name='write'),
     url(r'^list/', list, name='list'),
+    url(r'^view/(?P<num>[0-9]+)/$', view),
 ]
