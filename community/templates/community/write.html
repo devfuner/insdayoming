@@ -1,13 +1,23 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>write</title>
+
+    <link rel="stylesheet" href="{%  static 'bootstrap/bootstrap.min.css' %}">
+
 </head>
 <body>
+    <p>
+        <a href="{% url 'list' %}">목록</a>
+    </p>
     <form action="" method="post">
-        {{ form.as_p }}
         {% csrf_token %}
+        <table class="table">
+            {{ form.as_table }}
+        </table>
         <button type="submit" class="btn btn-primary">저장</button>
     </form>
 </body>

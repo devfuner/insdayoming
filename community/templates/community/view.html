@@ -1,17 +1,35 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>view</title>
+
+    <link rel="stylesheet" href="{%  static 'bootstrap/bootstrap.min.css' %}">
+
 </head>
 <body>
-    제목 : {{ article.title }}
-    </br>
-    저자 : {{ article.name }}
-    </br>
-    내용 : {{ article.contents }}
-    </br>
-    이메일 : {{ article.email }}
-    </br>
+    <p>
+        <a href="{% url 'list' %}">목록</a>
+    </p>
+    <table class="table">
+        <tr>
+            <th>제목</th>
+            <td>{{ article.title }}</td>
+        </tr>
+        <tr>
+            <th>저자</th>
+            <td>{{ article.name }}</td>
+        </tr>
+        <tr>
+            <th>내용</th>
+            <td>{{ article.contents }}</td>
+        </tr>
+        <tr>
+            <th>이메일</th>
+            <td>{{ article.email }}</td>
+        </tr>
+    </table>
 </body>
 </html>

@@ -5,15 +5,27 @@
 <head>
     <meta charset="UTF-8">
     <title>list</title>
+
+    <link rel="stylesheet" href="{%  static 'bootstrap/bootstrap.min.css' %}">
+
     <script src="{% static 'js/main.js' %}"></script>
     <script src="{% static 'community/community.js' %}"></script>
 </head>
 <body>
-    <ul>
-        <li>제목 | 저자 | 날짜</li>
-    {% for article in article_list %}
-        <li><a href="/community/view/{{article.pk}}">{{article.title}} | {{article.name}} | {{article.cdate|date:"D d M Y" }}</a></li>
-    {% endfor %}
-    </ul>
+    <p>
+        <a href="{% url 'write' %}">글쓰기</a>
+    </p>
+    <table class="table">
+        <tr><th>제목</th><th>저자</th><th>날짜</th></tr>
+        {% for article in article_list %}
+        <tr>
+            <td>
+                <a href="/community/view/{{article.pk}}">{{article.title}}</a>
+            </td>
+            <td>{{article.name}}</td>
+            <td>{{article.cdate|date:"D d M Y" }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>
