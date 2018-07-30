@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <th>제목</th>
+            <th>저자</th>
+            <th>날짜</th>
+        </tr>
+        {% for article in article_list %}
+        <tr>
+            <td>{{article.name}}</td>
+            <td>{{article.photo}}</td>
+            <td>{{article.cdate|date:"D d M Y" }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

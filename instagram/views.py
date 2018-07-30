@@ -3,6 +3,11 @@ from instagram.forms import Form, Article
 
 
 # Create your views here.
+def index(request):
+    article_list = Article.objects.all()
+    return render(request, 'instagram/index.html', {'article_list': article_list})
+
+
 def upload(request):
     if request.method == 'POST':
         form = Form(request.POST, request.FILES)
