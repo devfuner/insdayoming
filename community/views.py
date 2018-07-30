@@ -12,3 +12,8 @@ def write(request):
         form = Form()
 
     return render(request, 'write.html', {'form': form})
+
+
+def list(request):
+    article_list = Article.objects.all()
+    return render(request, 'list.html', {'article_list': article_list})

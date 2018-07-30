@@ -20,4 +20,5 @@ from community.views import *
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^write/', write, name='write'),
+    url(r'^list/', list, name='list'),
 ]
