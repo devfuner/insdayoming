@@ -6,6 +6,7 @@
             <th>사진</th>
             <th>이름</th>
             <th>날짜</th>
+            <th>수정</th>
         </tr>
         {% for article in articles %}
         <tr>
@@ -16,6 +17,9 @@
             </td>
             <td>{{ article.name }}</td>
             <td>{{ article.cdate|date:"Y-m-d" }}</td>
+            <td>
+                <a href="/instagram/update/{{ article.pk }}" class="btn btn-warning">수정</a>
+            </td>
         </tr>
         {% endfor %}
     </table>

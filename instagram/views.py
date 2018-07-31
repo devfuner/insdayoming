@@ -1,5 +1,5 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from instagram.forms import Form, Article
 
 
@@ -28,6 +28,7 @@ def upload(request):
                                photo=request.FILES['photo'],
                                contents=request.POST['contents'])
             new_form.save()
+
             return redirect('/instagram/')
     else:
         form = Form()
@@ -37,10 +38,30 @@ def upload(request):
 
 def detail(request, pk):
     article = Article.objects.get(pk=pk)
+
     return render(request, 'instagram/detail.html', {'article': article})
+
+
+def update(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    if request.method == 'POST':
+        form = Form(request.POST, instance=article)
+        if form.is_valid():
+            article = form.save(commit=False)
+            article.name = request.POST['name']
+            article.photo = request.FILES['photo']
+            article.contents = request.POST['contents']
+            article.save()
+
+            return redirect('/instagram/')
+    else:
+        form = Form(instance=article)
+
+    return render(request, 'instagram/update.html', {'form': form})
 
 
 def remove(request, pk):
     article = Article.objects.get(pk=pk)
     article.delete()
+
     return redirect('/instagram/')
