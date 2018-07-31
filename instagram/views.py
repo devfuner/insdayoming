@@ -38,3 +38,9 @@ def upload(request):
 def detail(request, pk):
     article = Article.objects.get(pk=pk)
     return render(request, 'instagram/detail.html', {'article': article})
+
+
+def remove(request, pk):
+    article = Article.objects.get(pk=pk)
+    article.delete()
+    return redirect('/instagram/')
