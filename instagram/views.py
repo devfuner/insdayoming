@@ -58,7 +58,7 @@ def update(request, pk):
     else:
         form = Form(instance=article)
 
-    return render(request, 'instagram/update.html', {'form': form})
+    return render(request, 'instagram/upload.html', {'form': form})
 
 
 def remove(request, pk):
