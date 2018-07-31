@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect
 from instagram.forms import Form, Article
 
@@ -5,7 +6,18 @@ from instagram.forms import Form, Article
 # Create your views here.
 def index(request):
     article_list = Article.objects.all()
-    return render(request, 'instagram/index.html', {'article_list': article_list})
+    paginator = Paginator(article_list, 5)
+    page = request.GET.get('page')
+    try:
+        articles = paginator.page(page)
+    except PageNotAnInteger:
+        print('PageNotAnInteger')
+        articles = paginator.page(1)
+    except EmptyPage:
+        print('EmptyPage')
+        articles = paginator.page(paginator.num_pages)
+
+    return render(request, 'instagram/index.html', {'articles': articles})
 
 
 def upload(request):
