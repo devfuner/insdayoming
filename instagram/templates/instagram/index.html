@@ -7,15 +7,15 @@
 <body>
     <table class="table">
         <tr>
-            <th>제목</th>
-            <th>저자</th>
+            <th>사진</th>
+            <th>이름</th>
             <th>날짜</th>
         </tr>
         {% for article in article_list %}
         <tr>
-            <td>{{article.name}}</td>
-            <td>{{article.photo}}</td>
-            <td>{{article.cdate|date:"D d M Y" }}</td>
+            <td><img src="{{ article.photo.url }}" width="100" /></td>
+            <td>{{ article.name }}</td>
+            <td>{{ article.cdate|date:"Y-m-d" }}</td>
         </tr>
         {% endfor %}
     </table>
