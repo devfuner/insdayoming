@@ -5,7 +5,7 @@ from instagram.forms import Form, Article
 
 # Create your views here.
 def index(request):
-    article_list = Article.objects.all()
+    article_list = Article.objects.all().order_by('-cdate')
     paginator = Paginator(article_list, 5)
     page = request.GET.get('page')
     try:
