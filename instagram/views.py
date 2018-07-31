@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from instagram.forms import Form, Article
 
 
@@ -16,6 +16,7 @@ def upload(request):
                                photo=request.FILES['photo'],
                                contents=request.POST['contents'])
             new_form.save()
+            return redirect('/instagram/')
     else:
         form = Form()
 
