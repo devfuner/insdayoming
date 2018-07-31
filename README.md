@@ -44,3 +44,7 @@ Model을 만들고 해야할 일
 [django 초보 가이드 실습을 통해 알아보는 장고 입문](https://inflearn.com/course/django-초보-가이드-실습을-통해-알아보는-장고-입문/)  
 [예제로 배우는 Python 프로그래밍](http://pythonstudy.xyz/python/django)    
 [장고걸스 튜토리얼](https://tutorial.djangogirls.org/ko/)  
+[장고걸스 튜토리얼 GitHub](https://github.com/DjangoGirls/tutorial/tree/master/ko)    
+[bootstrap](https://getbootstrap.com)  
+[django Documentation](https://docs.djangoproject.com/ko/2.0/intro/)  
+[날로 먹는 Django 웹프레임워크 강좌](https://blog.hannal.com/category/start-with-django-webframework/)  
