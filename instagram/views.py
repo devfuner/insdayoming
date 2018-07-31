@@ -24,10 +24,11 @@ def upload(request):
     if request.method == 'POST':
         form = Form(request.POST, request.FILES)
         if form.is_valid():
-            new_form = Article(name=request.POST['name'],
-                               photo=request.FILES['photo'],
-                               contents=request.POST['contents'])
-            new_form.save()
+            article = form.save(commit=False)
+            article.name = request.POST['name']
+            article.photo = request.FILES['photo']
+            article.contents = request.POST['contents']
+            article.save()
 
             return redirect('/instagram/')
     else:
