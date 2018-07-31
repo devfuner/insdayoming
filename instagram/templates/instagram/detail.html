@@ -1,0 +1,15 @@
+{% extends 'instagram/base.html' %}
+
+{% block content %}
+    <table class="table" style="text-align: center;">
+        <tr>
+            <td><img src="{{ article.photo.url }}" class="rounded mx-auto d-block"/></td>
+        </tr>
+        <tr>
+            <td>{{ article.name }} {{ article.cdate|date:"Y-m-d" }}</td>
+        </tr>
+        <tr>
+            <td>{{ article.contents }}</td>
+        </tr>
+    </table>
+{% endblock content %}

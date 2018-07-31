@@ -33,3 +33,8 @@ def upload(request):
         form = Form()
 
     return render(request, 'instagram/upload.html', {'form': form})
+
+
+def detail(request, pk):
+    article = Article.objects.get(pk=pk)
+    return render(request, 'instagram/detail.html', {'article': article})

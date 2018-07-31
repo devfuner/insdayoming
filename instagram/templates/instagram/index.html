@@ -9,7 +9,11 @@
         </tr>
         {% for article in articles %}
         <tr>
-            <td><img src="{{ article.photo.url }}" width="100" class="img-thumbnail"/></td>
+            <td>
+                <a href="detail/{{ article.pk }}">
+                    <img src="{{ article.photo.url }}" width="100" class="img-thumbnail"/>
+                </a>
+            </td>
             <td>{{ article.name }}</td>
             <td>{{ article.cdate|date:"Y-m-d" }}</td>
         </tr>
