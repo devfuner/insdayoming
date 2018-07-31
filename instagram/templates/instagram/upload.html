@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>upload</title>
-</head>
-<body>
+{% extends 'instagram/base.html' %}
+
+{% block content %}
     <form method="post" action="" enctype="multipart/form-data">
         {% csrf_token %}
         <table class="table">
@@ -12,5 +8,4 @@
         </table>
         <button type="submit">저장</button>
     </form>
-</body>
-</html>
+{% endblock content %}

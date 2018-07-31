@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>index</title>
-</head>
-<body>
+{% extends 'instagram/base.html' %}
+
+{% block content %}
     <table class="table">
         <tr>
             <th>사진</th>
@@ -13,11 +9,10 @@
         </tr>
         {% for article in article_list %}
         <tr>
-            <td><img src="{{ article.photo.url }}" width="100" /></td>
+            <td><img src="{{ article.photo.url }}" width="100" class="img-thumbnail"/></td>
             <td>{{ article.name }}</td>
             <td>{{ article.cdate|date:"Y-m-d" }}</td>
         </tr>
         {% endfor %}
     </table>
-</body>
-</html>
+{% endblock content %}
