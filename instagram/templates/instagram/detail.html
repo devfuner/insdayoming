@@ -1,16 +1,15 @@
 {% extends 'instagram/base.html' %}
 
 {% block content %}
-    <table class="table" style="text-align: center;">
-        <tr>
-            <td><img src="{{ article.photo.url }}" class="rounded mx-auto d-block"/></td>
-        </tr>
-        <tr>
-            <td>{{ article.name }} {{ article.cdate|date:"Y-m-d" }}</td>
-        </tr>
-        <tr>
-            <td>{{ article.contents }}</td>
-        </tr>
-    </table>
-    <a href="/instagram/remove/{{ article.pk }}" class="btn btn-danger">삭제</a>
+    <div class="card w-25 mx-auto d-block">
+        <img class="card-img-top" src="{{ article.photo.url }}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{ article.name }}</h5>
+            <p class="card-text">{{ article.contents }}</p>
+            <p>
+                <a href="/instagram/update/{{ article.pk }}" class="btn btn-warning">수정</a>
+                <a href="/instagram/remove/{{ article.pk }}" class="btn btn-danger">삭제</a>
+            </p>
+        </div>
+    </div>
 {% endblock content %}
