@@ -12,40 +12,48 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Instagram</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'index' %}">목록 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'upload' %}">업로드</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    {% block content%}
-    {% endblock content%}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Instagram</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'index' %}">목록 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'upload' %}">업로드</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+{% block content%}
+{% endblock content%}
 
-    {% if paginator %}
-        <div>
-            <span class="step-links">
-                {% if items.has_previous %}
-                    <a href="?page={{ items.previous_page_number }}">previous</a>
+{% if paginator %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            {% if items.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page={{ items.previous_page_number }}">Previous</a></li>
+            {% endif %}
+
+            {% for page in items.paginator.page_range %}
+                {% if items.number == page %}
+                    <li class="page-item active">
+                        <a class="page-link" href="?page={{ page }}">{{ page }} <span class="sr-only">(current)</span></a>
+                    </li>
+                {% else %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
                 {% endif %}
-                <span class="current">
-                    Page {{ items.number }} of {{ items.paginator.num_pages }}.
-                </span>
-                {% if items.has_next %}
-                    <a href="?page={{ items.next_page_number }}">next</a>
-                {% endif %}
-            </span>
-        </div>
-    {% endif %}
+            {% endfor %}
+
+            {% if items.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ items.next_page_number }}">Next</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endif %}
 </body>
 </html>
