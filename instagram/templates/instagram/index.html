@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="card-columns">
-        {% for article in articles %}
+        {% for article in items %}
         <div class="card">
             <img class="card-img-top" src="{{ article.photo.url }}" alt="Card image cap">
             <div class="card-body">
@@ -12,20 +12,5 @@
             </div>
         </div>
         {% endfor %}
-    </div>
-
-
-    <div>
-        <span class="step-links">
-            {% if articles.has_previous %}
-                <a href="?page={{ contacts.previous_page_number }}">previous</a>
-            {% endif %}
-            <span class="current">
-                Page {{ articles.number }} of {{ articles.paginator.num_pages }}.
-            </span>
-            {% if articles.has_next %}
-                <a href="?page={{ articles.next_page_number }}">next</a>
-            {% endif %}
-        </span>
     </div>
 {% endblock content %}

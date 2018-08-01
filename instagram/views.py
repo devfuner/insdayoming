@@ -9,15 +9,15 @@ def index(request):
     paginator = Paginator(article_list, 5)
     page = request.GET.get('page')
     try:
-        articles = paginator.page(page)
+        items = paginator.page(page)
     except PageNotAnInteger:
         print('PageNotAnInteger')
-        articles = paginator.page(1)
+        items = paginator.page(1)
     except EmptyPage:
         print('EmptyPage')
-        articles = paginator.page(paginator.num_pages)
+        items = paginator.page(paginator.num_pages)
 
-    return render(request, 'instagram/index.html', {'articles': articles})
+    return render(request, 'instagram/index.html', {'items': items, 'paginator': paginator})
 
 
 def upload(request):
