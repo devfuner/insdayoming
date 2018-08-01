@@ -18,6 +18,13 @@ or
 > 본 프로젝트의 예  
 > (venv) D:\PycharmProjects django-admin startproject insdayoming D:\PycharmProjects\insdayoming
 
+기본 테이블 생성
+> manage.py makemigrations  
+> manage.py migrate
+
+관리자 계정 생성
+> manage.py createsuperuser  
+
 서버 실행하기
 > (venv) ~$ manage.py runserver
 
@@ -39,7 +46,7 @@ Model을 만들고 해야할 일
 1. manage.py makemigrations
 2. manage.py migrate
 
-
+    
 ### 참고사이트
 [django 초보 가이드 실습을 통해 알아보는 장고 입문](https://inflearn.com/course/django-초보-가이드-실습을-통해-알아보는-장고-입문/)  
 [예제로 배우는 Python 프로그래밍](http://pythonstudy.xyz/python/django)    
