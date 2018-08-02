@@ -1,6 +1,8 @@
+import json
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect, get_object_or_404
 from instagram.forms import Form, Article
+from django.http import HttpResponse
 
 
 # Create your views here.
@@ -66,3 +68,14 @@ def remove(request, pk):
     article.delete()
 
     return redirect('/instagram/')
+
+
+def like(request):
+    pk = request.POST.get('pk', None)
+    article = Article.objects.get(pk=pk)
+    article.like += 1
+    article.save()
+
+    context = {'pk': pk, 'like_count': article.like}
+
+    return HttpResponse(json.dumps(context), content_type='application/json')

@@ -6,6 +6,9 @@
         <div class="card">
             <img class="card-img-top" src="{{ article.photo.url }}" alt="Card image cap">
             <div class="card-body">
+                <button type="button" class="btn btn-primary like" data-pk="{{ article.pk }}">
+                    좋아요! <span class="badge badge-light">{{ article.like }}</span>
+                </button>
                 <h5 class="card-title">{{ article.name }}</h5>
                 <p class="card-text">{{ article.contents }}</p>
                 <a href="/instagram/detail/{{ article.pk }}" class="btn btn-primary">Go somewhere</a>
@@ -13,4 +16,33 @@
         </div>
         {% endfor %}
     </div>
+
+    <script>
+        $(document).ready(
+            $('.like').click(function() {
+                var pk = $(this).attr('data-pk');
+
+                $.ajax({
+                    // POST 요청엔 항상 csrf_token이 필요
+                    type: "POST",
+                    url: "{% url 'like' %}",
+                    data: {'pk': pk, 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+                    dataType: "json",
+                    success: function(response) {
+                        // ajax 통신이 성공했을 때
+                        var pk = response.pk
+                        var like_count = response.like_count
+
+                        $('.like[data-pk=' + pk + '] > span').text(like_count);
+                    },
+                    error: function(request, status, error) {
+                        // 에러 처리
+                        console.log(error)
+                    }
+                })
+            })
+        );
+    </script>
 {% endblock content %}
+
+
